@@ -65,9 +65,16 @@ export const Login: React.FC = () => {
             alignItems: "center",
           }}
         >
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px'}}>
-            <img src={logo} alt="yariga Logo" /> 
-            <span style={{ fontSize: '22px', fontWeight: '700'}}>Stringle</span>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '10px'
+            }}
+          >
+            <img src={logo} alt="Stringle" />
+            <span style={{ fontSize: '24px', fontWeight: '700' }}>STRINGLE</span>
           </div>
           <Box mt={4}>
             <GoogleButton />

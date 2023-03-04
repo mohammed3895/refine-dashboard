@@ -14,7 +14,7 @@ cloudinary.config({
 
 const getAllCourses = async (req: express.Request, res: express.Response) => {
     try {
-        const data = await CourseModel.find()
+        const data = await CourseModel.find({})
         res.status(200).json(data)
     } catch (e) {
         res.status(500).json(e)
@@ -22,7 +22,7 @@ const getAllCourses = async (req: express.Request, res: express.Response) => {
 }
 
 const createCourse = async (req: express.Request, res: express.Response) => {
-    const { category, title, level, progress, photo, email } = req.body
+    const { category, title, level, description, photo, email } = req.body
         try {
             const session = await mongoose.startSession();
             session.startTransaction()
@@ -33,16 +33,20 @@ const createCourse = async (req: express.Request, res: express.Response) => {
             
             const photoUrl = await cloudinary.uploader.upload(photo)
 
-            const course = await CourseModel.create({ 
+            const newCourse = await CourseModel.create({ 
                 title, 
                 category, 
                 level, 
-                progress, 
+                description, 
                 photo: photoUrl.url,
                 creator: user._id
             })
-            
-            res.status(200).json(course)
+
+            user.courses.push(newCourse._id)
+            await user.save({ session })
+            await session.commitTransaction()
+
+            res.status(200).json({ message: "Course Created Successfully" })
         } catch (e) {
             res.status(500).json(e)
         }
@@ -51,7 +55,6 @@ const createCourse = async (req: express.Request, res: express.Response) => {
 const getCourseById = async (req: express.Request, res: express.Response) => {
     const id = req.body._id
     try {
-        
         const data = await CourseModel.findById(id)
         res.status(200).json(data)
     } catch (e) {

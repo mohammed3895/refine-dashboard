@@ -2,10 +2,10 @@ import express from "express";
 import UserModel from "../models/Users";
 
 const createUser = async (req: express.Request, res: express.Response) => {
+    const { name, email, avatar } = req.body
     try {
-        const { name, email, avatar } = req.body
-
         const userExist = await UserModel.findOne({ email })
+
         if(userExist) return res.json(userExist)
 
         const newUser = await UserModel.create({
@@ -13,7 +13,6 @@ const createUser = async (req: express.Request, res: express.Response) => {
             email,
             avatar
         })
-        
         res.status(200).json(newUser)
     } catch (e) {
         res.status(500).json(e)
@@ -31,7 +30,18 @@ const getAllUsers = async (req: express.Request, res: express.Response) => {
 }
 
 const getUserById = async (req: express.Request, res: express.Response) => {
+    const { id } = req.params
+    try {
+        const user = await UserModel.findOne({ id })
+        if(user) {
+            res.status(200).json(user)
+        } else {
+            res.status(500).json({ message: "User not Found"})
+        }
 
+    } catch (e) {
+        res.json(e)
+    }
 }
 
 export { getAllUsers, getUserById, createUser }

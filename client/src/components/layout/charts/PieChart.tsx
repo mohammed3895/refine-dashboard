@@ -1,5 +1,4 @@
-import React from 'react'
-import { Stack, Typography } from '@pankod/refine-mui'
+import { Stack } from '@pankod/refine-mui'
 import LatestResults from 'components/courses/LatestResults'
 import LearnTime from '../../courses/LearnTime'
 

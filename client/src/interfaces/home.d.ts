@@ -6,8 +6,9 @@ export interface PieChartProps {
 }
 
 export interface CourseCardProps {
+    id?: BaseKey | undefined,
     title: string,
     category: string,
-    type: string,
-    bgColor: string
+    level: string,
+    photo: string
 }

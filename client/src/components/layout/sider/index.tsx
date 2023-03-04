@@ -192,7 +192,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
                 sx={{
                   justifyContent: "center",
                   minWidth: 36,
-                  fontSize: "20px",
+                  fontSize: "24px",
                   color: isSelected ? "#fcfcfc" : "#1e1e1e",
                 }}
               >

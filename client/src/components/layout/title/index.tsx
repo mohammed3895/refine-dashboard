@@ -14,7 +14,7 @@ export const Title: React.FC<TitleProps> = ({ collapsed }) => {
           <img src={logo} alt="Stringle" width="35px" />
         ) : (
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px'}}>
-            <img src={logo} alt="yariga Logo" width="35px" /> 
+            <img src={logo} alt="Stringle" width="35px" /> 
             <Typography
               sx={{ 
                 fontSize: '22px', 
@@ -23,7 +23,7 @@ export const Title: React.FC<TitleProps> = ({ collapsed }) => {
                 textTransform: 'capitalize',
                 color: '#1e1e1e'
                 }}>
-              Stringle
+              STRINGLE
             </Typography>
           </div>
         )}

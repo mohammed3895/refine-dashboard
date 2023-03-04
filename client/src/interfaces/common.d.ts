@@ -11,6 +11,7 @@ export interface CustomButtonProps {
 
 export interface ProfileProps {
     type: string,
+    icon: string,
     name: string,
     avatar: string,
     email: string,
@@ -35,5 +36,5 @@ export interface FormProps {
     handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
     handleImageChange: (file) => void,
     onFinishHandler: (data: FieldValues) => Promise<void> | void,
-    propertyImage: { name: string, url: string },
+    courseImage: { name: string, url: string },
 }

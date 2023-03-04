@@ -1,4 +1,4 @@
-import { useGetIdentity, useList } from "@pankod/refine-core";
+import { useGetIdentity } from "@pankod/refine-core";
 import { Box, Typography, Stack, useMediaQuery } from "@pankod/refine-mui";
 import { Rocket } from "assets";
 import PieChart from "components/layout/charts/PieChart";
@@ -51,7 +51,7 @@ const Home = () => {
           <img src={Rocket} alt="" width="200px" height="auto" />
         </Box>
 
-        <Box
+        {/* <Box
           width="90%"
           borderRadius="12px"
           p={2}
@@ -76,7 +76,7 @@ const Home = () => {
             </Typography>
             <Typography>Next Tue at 7:00 PM</Typography>
           </Stack>
-        </Box>
+        </Box> */}
       </Box>
 
       <Box

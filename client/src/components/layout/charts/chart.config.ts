@@ -6,11 +6,11 @@ export const TotalRevenueSeries = [
     data: [13, 24, 11, 5, 13, 13, 26],
   },
   {
-    name: 'Web Development',
+    name: 'Web',
     data: [15, 4, 12, 14, 10, 13, 7],
   },
   {
-    name: 'Android Cotlin',
+    name: 'Android',
     data: [35, 14, 12, 24, 18, 22, 17],
   },
 ];
@@ -27,7 +27,7 @@ export const TotalRevenueOptions: ApexOptions = {
   plotOptions: {
     bar: {
       horizontal: false,
-      columnWidth: '20%',
+      columnWidth: '30%',
     },
   },
   dataLabels: {

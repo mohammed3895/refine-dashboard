@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Refine, AuthProvider } from "@pankod/refine-core";
 import {
   notificationProvider,
@@ -21,10 +19,16 @@ import { default as Home } from "pages/Home";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
 
-import { HiOutlineChatBubbleOvalLeftEllipsis, HiOutlineCog6Tooth, HiOutlineInbox } from 'react-icons/hi2'
-import { CiFolderOn } from "react-icons/ci";
-import { Courses, Messeges, Resources, Settings } from "pages";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ChatIcon from '@mui/icons-material/Chat';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import FolderIcon from '@mui/icons-material/Folder';
+import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
+
+import { Courses, Messeges, Resources, MyProfile, Comunity, CourseCreate, CourseDetails } from "pages";
 import CourseCard from "components/courses/CourseCard";
+import Profile from "components/Profile";
+import ComunityCard from "components/ComunityCard";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -117,25 +121,38 @@ function App() {
           catchAll={<ErrorComponent />}
           resources={[
             {
-              name: "Course",
+              name: "courses",
               list: Courses,
-              // show: CourseCard,
-              icon: <HiOutlineInbox />
+              show: CourseDetails,
+              create: CourseCreate,
+              icon: <AutoStoriesIcon />
             },
             {
-              name: "Resource",
+              name: "resources",
               list: Resources,
-              icon: <CiFolderOn />
+              icon: <FolderIcon />
             },
             {
-              name: "Messege",
+              name: "comunity",
+              options: {
+                label: "Comunity"
+              },
+              icon: <SupervisedUserCircleIcon />,
+              list: Comunity,
+              show: ComunityCard
+            },
+            {
+              name: "messeges",
               list: Messeges,
-              icon: <HiOutlineChatBubbleOvalLeftEllipsis />
+              icon: <ChatIcon />
             },
             {
-              name: "Setting",
-              list: Settings,
-              icon: <HiOutlineCog6Tooth />
+              name: "profile",
+              options: {
+                label: "Profile"
+              },
+              list: Profile,
+              icon: <AccountCircleIcon />
             },
           ]}
           Title={Title}
